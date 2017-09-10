@@ -12,6 +12,7 @@
     var words = ['apple', 'banana', 'carrot', 'dinosaur', 'python', 'project', 'fire', 'goat', 'shrimp', 'lobster', 'rabbit', 
     'house']
 
+    //initial hidden word
     function hideWord(word) {
       var hidden_word = "" 
         for (var j = 0; j < word.length; j++) {
@@ -56,6 +57,7 @@
       return new_word;
       } 
 
+      // returns true if player has won
       function winGame(answer_word, masked_word){
         if(answer_word === masked_word) {
           console.log("You win!!!");
@@ -64,6 +66,7 @@
         return false;
       }
 
+      // returns true if player has lost
       function loseGame(guess_count){
         if (guess_count <= 0){
           console.log("you lose");
@@ -72,28 +75,19 @@
         return false;
       }
 
+      // game over if a player has won or lost
       function gameOver(winGame, loseGame){
         return (winGame || loseGame);
       }
-
-
-
-      // console.log(revealWord(letter_guess.toLowerCase(), answer_word, masked_word));
-      // console.log(winGame(answer_word, masked_word));
-      // console.log(loseGame(guess_count));
-      // win = winGame(answer_word, masked_word);
-      // lose = loseGame(guess_count);
-      // console.log(gameOver(win, lose));
-
-      // function guessLetter() {
-
-      // }
+        // get random word from list
         var answer_word = words[Math.floor(Math.random() * words.length)];
         var guess_count = 7;
 
         var incorrect_letter_guesses = new Set();
+        // for testing only
         console.log(answer_word);
         var masked_word = hideWord(answer_word);
+        // for testing only
         console.log(masked_word);
 
 
@@ -107,8 +101,6 @@
             console.log(item.toString() + ", ");  
               });  
         }
-
-        // get random word from list
 
     </script>
   </body>
