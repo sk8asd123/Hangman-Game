@@ -28,11 +28,14 @@ function revealWord(letter, answer_word, masked_word, incorrect_letter_guesses){
 
     if (! isLetter(letter)){
         $(".letter_alert").text(letter + " Invalid Letter");
+        var audio = new Audio('sound/grenade.wav');
+        audio.play();
         return masked_word;
     }
 
     if (incorrect_letter_guesses.has(letter) || masked_word.indexOf(letter) != -1){
         $(".letter_alert").text(letter + " Already Guessed");
+        var audio = new Audio('sound/grenade.wav');
         return masked_word;
     }
 
@@ -41,6 +44,8 @@ function revealWord(letter, answer_word, masked_word, incorrect_letter_guesses){
         incorrect_letter_guesses.add(letter);
         $(".your_letters").append(letter);
         $(".panel-title").text("You have " + guess_count + " guesses left");
+        var audio = new Audio('sound/beep.wav');
+        audio.play();
         return masked_word;
     }
 
@@ -59,6 +64,8 @@ function revealWord(letter, answer_word, masked_word, incorrect_letter_guesses){
 function winGame(answer_word, masked_word){
     if(answer_word === masked_word){
         $("#result").text("You Win!!!");
+        var audio = new Audio('sound/win.wav');
+        audio.play();
         gameReset();
         return true;
     }
@@ -67,8 +74,10 @@ function winGame(answer_word, masked_word){
 
 // returns true if player has lost
 function loseGame(guess_count){
-    if (guess_count <= 0){
+    if (guess_count === 0){
         $("#result").text("The Answer is " + answer_word);
+        var audio = new Audio('sound/dying.mp3');
+        audio.play();
         gameReset();
         return true;
     }
@@ -104,7 +113,14 @@ document.onkeyup = function(event){
 
     $("#result").text(masked_word);
 
-    gameOver(loseGame(guess_count), winGame(answer_word, masked_word))
+    gameOver(loseGame(guess_count), winGame(answer_word, masked_word));
 };
 
+// // Visibility Buttons
+// $(".vis-button").on("click", function() {
+//     $(".captain-planet").animate({ opacity: "1" });
+// });
 
+// $(".invis-button").on("click", function() {
+//     $(".captain-planet").animate({ opacity: "0.05" });
+// });
