@@ -1,5 +1,5 @@
 var words = ['monkey', 'bear', 'lion', 'dinosaur', 'turtle', 'cat', 'parrot', 'goat', 'shrimp', 'lobster', 'rabbit',
-    'puppy', 'turkey', 'horse']
+    'puppy', 'turkey', 'horse', 'donkey']
 
 function newGame(){
     // get random word from list
