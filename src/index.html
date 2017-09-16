@@ -1,0 +1,101 @@
+<!doctype html>
+<html class="no-js" lang="">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <title></title>
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+
+    <link rel="manifest" href="site.webmanifest">
+    <link rel="apple-touch-icon" href="icon.png">
+    <!-- Place favicon.ico in the root directory -->
+
+    <link rel="stylesheet" href="../src/css/normalize.css">
+    <link rel="stylesheet" href="../src/css/main.css">
+</head>
+<body>
+<!--[if lte IE 9]>
+<p class="browserupgrade">You are using an <strong>outdated</strong> browser. Please <a href="https://browsehappy.com/">upgrade your browser</a> to improve your experience and security.</p>
+<![endif]-->
+
+
+
+<!-- Add your site or application content here -->
+<div class="container">
+
+    <div class="page-header">
+        <h1>Ultimate Hangman
+            <small>Long ago, ancient gods predicted the rise of the machines and established Ultimate Hangman as the final contest to
+                decide who rules Earth.</small></h1>
+    </div>
+
+    <!-- Result Panel -->
+    <div class="col-lg-12">
+        <div class="panel panel-default">
+            <div class="panel-heading">
+                <h3 class="panel-title"></h3>
+            </div>
+            <div class="panel-body">
+                    <h1 id="result"></h1>
+            </div>
+            <div class="hint">
+                <h5></h5>
+            </div>
+        </div>
+    </div>
+
+    <div class="guessed_letters">
+        <div class="row">
+            <div class="panel-heading">
+                <h5 class="guess-title"></h5>
+            </div>
+            <div class="col-sm-6">
+                <h5 class="your_letters"></h5>
+            </div>
+            <div class="col-sm-12">
+                <h6 class="letter_alert text-warning"></h6>
+            </div>
+        </div>
+    </div>
+
+</div>
+
+
+    <!-- Trigger the modal with a button -->
+    <button type="button" class="btn btn-outline-secondary" data-toggle="modal" data-target="#myModal">Game Rules</button>
+
+    <!-- Modal -->
+    <div class="modal fade" id="myModal" role="dialog">
+        <div class="modal-dialog">
+
+            <!-- Modal content-->
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal">&times;</button>
+                    <h4 class="modal-title">Game rules</h4>
+                </div>
+                <div class="modal-body">
+                    <p>Press a letter and guess the word. You get 7 chances to guess the right word.</p>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+
+
+
+</div>
+<script src="../js/plugins.js"></script>
+<script src="../js/main.js"></script>
+
+</body>
+</html>
