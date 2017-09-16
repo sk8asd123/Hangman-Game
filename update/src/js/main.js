@@ -1,11 +1,13 @@
-var answer_word;
-var guess_count;
-var incorrect_letter_guesses;
-var masked_word;
 var words = ['apple', 'banana', 'carrot', 'dinosaur', 'python', 'project', 'fire', 'goat', 'shrimp', 'lobster', 'rabbit',
     'house']
 
-
+function newGame() {
+    // get random word from list
+    answer_word = words[Math.floor(Math.random() * words.length)];
+    guess_count = 7;
+    masked_word = hideWord(answer_word);
+    incorrect_letter_guesses = new Set();
+}
 
 //initial hidden word
 function hideWord(word) {
@@ -53,11 +55,8 @@ function revealWord(letter, answer_word, masked_word, incorrect_letter_guesses){
 
 // returns true if player has won
 function winGame(answer_word, masked_word){
-    if(answer_word === masked_word) {
+    if(answer_word === masked_word){
         $("#result").text("You Win!!!");
-        $(".your_letters").empty();
-        $(".letter_alert").empty();
-        $(".guess-title").empty();
         gameReset();
         return true;
     }
@@ -68,9 +67,6 @@ function winGame(answer_word, masked_word){
 function loseGame(guess_count){
     if (guess_count <= 0){
         $("#result").text("The Answer is " + answer_word);
-        $(".your_letters").empty();
-        $(".letter_alert").empty();
-        $(".guess-title").empty();
         gameReset();
         return true;
     }
@@ -87,31 +83,28 @@ function isLetter(c) {
     return c.toLowerCase() != c.toUpperCase();
 }
 
-function gameReset(){
-    var answer_word = words[Math.floor(Math.random() * words.length)];
-    var guess_count = 7;
-    var masked_word = hideWord(answer_word);
-    var incorrect_letter_guesses = new Set();
-    
+function gameReset() {
     $(".your_letters").empty();
     $(".letter_alert").empty();
     $(".guess-title").empty();
+    setTimeout(newGame, 1000);
+    $(".guessed_letters_header").text("Type a letter to start");
 }
 
 
-// get random word from list
-var answer_word = words[Math.floor(Math.random() * words.length)];
-var guess_count = 7;
-var masked_word = hideWord(answer_word);
-var incorrect_letter_guesses = new Set();
 
-
+newGame();
+console.log(masked_word);
+console.log(answer_word);
 
 // Captures keyboard input. Depending on the letter pressed it will "call" (execute) different functions.
 document.onkeyup = function(event) {
+    console.log(masked_word);
+    console.log(answer_word);
     $(".letter_alert").empty();
     var letter_guess = String.fromCharCode(event.keyCode).toLowerCase();
     masked_word = revealWord(letter_guess.toLowerCase(), answer_word, masked_word, incorrect_letter_guesses);
+
     $("#result").text(masked_word);
 
     gameOver(loseGame(guess_count), winGame(answer_word, masked_word))
