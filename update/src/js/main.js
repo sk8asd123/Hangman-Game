@@ -91,16 +91,10 @@ function gameReset() {
     $(".guessed_letters_header").text("Type a letter to start");
 }
 
-
-
 newGame();
-console.log(masked_word);
-console.log(answer_word);
 
 // Captures keyboard input. Depending on the letter pressed it will "call" (execute) different functions.
 document.onkeyup = function(event) {
-    console.log(masked_word);
-    console.log(answer_word);
     $(".letter_alert").empty();
     var letter_guess = String.fromCharCode(event.keyCode).toLowerCase();
     masked_word = revealWord(letter_guess.toLowerCase(), answer_word, masked_word, incorrect_letter_guesses);
