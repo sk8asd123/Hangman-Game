@@ -1,5 +1,5 @@
 var words = ['monkey', 'bear', 'lion', 'dinosaur', 'turtle', 'cat', 'parrot', 'goat', 'shrimp', 'lobster', 'rabbit',
-    'puppy', 'turkey']
+    'puppy', 'turkey', 'horse']
 
 function newGame(){
     // get random word from list
@@ -9,6 +9,8 @@ function newGame(){
     incorrect_letter_guesses = new Set();
     $(".guess-title").text("Your Guesses");
     $(".panel-title").text("Guess the Word");
+    $(".hint").text("Hint: Animal");
+    $("#result").text(masked_word);
 }
 
 //initial hidden word
@@ -80,15 +82,16 @@ function gameOver(winGame, loseGame){
 }
 
 // tested for English only
-function isLetter(c){
-    return c.toLowerCase() != c.toUpperCase();
+function isLetter(input){
+    return /^[a-zA-Z()]*$/.test(input);
 }
 
 function gameReset(){
     $(".your_letters").empty();
     $(".letter_alert").empty();
     $(".guess-title").empty();
-    setTimeout(newGame, 1000);
+    $(".hint").empty();
+    setTimeout(newGame, 1000); //1000 milliseconds
     $(".guessed_letters_header").text("Type a letter to start");
 }
 
