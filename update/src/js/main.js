@@ -22,7 +22,6 @@ function hideWord(word){
     return hidden_word;
 }
 
-
 // find if letter is in secret word
 function revealWord(letter, answer_word, masked_word, incorrect_letter_guesses){
     var new_word = '';
